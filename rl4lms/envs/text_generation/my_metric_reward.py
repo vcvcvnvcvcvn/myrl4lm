@@ -15,7 +15,7 @@ if not os.path.exists(REWARD_CHECKPOINT_PATH):
     os.makedirs("reward_model/rm_checkpoint", exist_ok=True)
     os.system(
         f"wget -O {REWARD_CHECKPOINT_PATH} \
-        https://huggingface.co/Jieming/test_reward_model/resolve/main/pytorch_model.bin"
+        https://huggingface.co/Jieming/base_reward_model/resolve/main/pytorch_model.bin"
     )
 SFT_MODEL_PATH = "CarperAI/openai_summarize_tldr_sft"
 MAX_LENGTH = 550
