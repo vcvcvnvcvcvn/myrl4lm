@@ -132,7 +132,7 @@ class RewardFunctionRegistry:
         "chrf": chrF,
         "intent_accuracy": IntentAccuracy,
         "common_gen_preference_model": CommonGenPrefRM,
-        'myReward': myRewardFunction,
+        'myRewardMetric': myRewardFunction,
     }
 
     @classmethod
