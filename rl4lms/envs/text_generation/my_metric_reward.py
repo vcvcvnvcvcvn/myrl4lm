@@ -236,7 +236,7 @@ class myRewardMetric(BaseMetric):
             #     device=self._last_gpu,
             # )
             scores = reward_fn(prompt_texts,generated_texts,reference_texts)
-            metric_dict = {"semantic/my_reward_score": scores}
+            metric_dict = {"semantic/my_reward_score": (None,scores)}
             return metric_dict
         
 
