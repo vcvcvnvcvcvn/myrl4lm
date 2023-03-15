@@ -157,10 +157,18 @@ def get_scores(samples: List[str]):
 
 def reward_fn(prompt_texts,generated_texts,reference_texts):
     ###format_step
-    for text in zip(prompt_texts,generated_texts):
+    samples = [text[0]+ "TL;DR: "+text[1] for text in zip(prompt_texts,generated_texts)]
+    for text in zip(prompt_texts,reference_texts):
+        ta = type(text[0])
+        tb = type(text[1])
         print(type(text[0]))
         print(type(text[1]))
-    samples = [text[0]+ "TL;DR: "+text[1] for text in zip(prompt_texts,generated_texts)]
+        if isinstance(ta,list):
+            print(ta)
+
+        if isinstance(tb,list):
+            print(tb)
+            1/0
     original_samples = [text[0]+ "TL;DR: "+text[1] for text in zip(prompt_texts,reference_texts)]
     #original_samples = [text + post_summary_dict[text.strip()] for text in original_samples]
     #original_samples = [text + refrences for text in original_samples]
