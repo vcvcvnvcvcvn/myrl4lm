@@ -164,7 +164,7 @@ def reward_fn(prompt_texts,generated_texts,reference_texts):
     original_scores = get_scores(original_samples)
     scores = get_scores(samples)
     norms_scores = scores - original_scores####compare with original summary 
-    return torch.mean(norms_scores)
+    return torch.mean(norms_scores).item()
 
 
 class RewardFunction(ABC):
