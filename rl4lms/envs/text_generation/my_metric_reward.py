@@ -243,7 +243,7 @@ class myRewardMetric(BaseMetric):
 class myRewardFunction(RewardFunction):
     def __init__(self) -> None:
         super().__init__()
-        self._metric = myRewardMetric
+        self._metric = myRewardMetric()
     def __call__(
         self,
         current_observation: Observation,
@@ -257,6 +257,6 @@ class myRewardFunction(RewardFunction):
             references = [next_observation.target_or_reference_texts]
             predicted = [next_observation.context_text]
             metric_results = self._metric.compute(prompts, predicted, references)
-            my_score = metric_results["semantic/my_reward_score"]
+            my_score = metric_results["semantic/my_reward_score"][1]
             return my_score
         return 0
