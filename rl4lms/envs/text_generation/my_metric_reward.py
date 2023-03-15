@@ -17,7 +17,7 @@ if not os.path.exists(REWARD_CHECKPOINT_PATH):
         f"wget -O {REWARD_CHECKPOINT_PATH} \
         https://huggingface.co/Jieming/gpt2_reward_model/resolve/main/pytorch_model.bin"
     )
-SFT_MODEL_PATH = "CarperAI/openai_summarize_tldr_sft"
+SFT_MODEL_PATH = "gpt2"
 MAX_LENGTH = 550
 
 class GPTRewardModel(nn.Module):
