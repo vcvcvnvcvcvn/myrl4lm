@@ -17,7 +17,7 @@ if not os.path.exists(REWARD_CHECKPOINT_PATH):
         f"wget -O {REWARD_CHECKPOINT_PATH} \
         https://huggingface.co/Jieming/gpt2_reward_model/resolve/main/pytorch_model.bin"
     )
-SFT_MODEL_PATH = "gpt2"
+SFT_MODEL_PATH = "gpt2gavin124/gpt2-finetuned-cnn-summarization-v2"
 MAX_LENGTH = 550
 
 class GPTRewardModel(nn.Module):
@@ -29,7 +29,7 @@ class GPTRewardModel(nn.Module):
         self.config.n_embd = self.config.hidden_size if hasattr(self.config, "hidden_size") else self.config.n_embd
         self.transformer = model.transformer
         self.v_head = nn.Linear(self.config.n_embd, 1, bias=False)###加一个输出层，输出一个分数
-        self.tokenizer = AutoTokenizer.from_pretrained("gpt2")###load the tokenizer
+        self.tokenizer = AutoTokenizer.from_pretrained("gavin124/gpt2-finetuned-cnn-summarization-v2")###load the tokenizer
         self.tokenizer.pad_token = self.tokenizer.eos_token##pad token is equal to eos_token
         self.PAD_ID = self.tokenizer(self.tokenizer.pad_token)["input_ids"][0]##?
 
@@ -123,7 +123,7 @@ class GPTRewardModel(nn.Module):
 
 print('Load the pre-trained model')
 # Load the pre-trained reward model
-rw_tokenizer = AutoTokenizer.from_pretrained("gpt2")
+rw_tokenizer = AutoTokenizer.from_pretrained("gavin124/gpt2-finetuned-cnn-summarization-v2")
 rw_tokenizer.pad_token = rw_tokenizer.eos_token
 rw_model = GPTRewardModel(SFT_MODEL_PATH)
 rw_model.load_state_dict(torch.load(REWARD_CHECKPOINT_PATH))
