@@ -229,12 +229,12 @@ class myRewardMetric(BaseMetric):
         split_name: str = None,
     ) -> Tuple[List[float], float]:
         with torch.no_grad():
-            metric_results = self._metric.compute(
-                predictions=generated_texts,
-                references=reference_texts,
-                lang=self._language,
-                device=self._last_gpu,
-            )
+            # metric_results = self._metric.compute(
+            #     predictions=generated_texts,
+            #     references=reference_texts,
+            #     lang=self._language,
+            #     device=self._last_gpu,
+            # )
             scores = reward_fn(prompt_texts,generated_texts,reference_texts)
             metric_dict = {"semantic/my_reward_score": scores}
             return metric_dict
