@@ -121,16 +121,20 @@ class GPTRewardModel(nn.Module):
             "rejected_end_scores": rejected_end_scores,
         }
 
-print('Load the pre-trained model')
-# Load the pre-trained reward model
-rw_tokenizer = AutoTokenizer.from_pretrained("gavin124/gpt2-finetuned-cnn-summarization-v2")
-rw_tokenizer.pad_token = rw_tokenizer.eos_token
-rw_model = GPTRewardModel(SFT_MODEL_PATH)
-rw_model.load_state_dict(torch.load(REWARD_CHECKPOINT_PATH))
-rw_model.half()
-rw_model.eval()
-rw_device = torch.device("cuda:{}".format(0))  # set reward model device
-rw_model.to(rw_device)
+# print('Load the pre-trained model')
+# # Load the pre-trained reward model
+# rw_tokenizer = AutoTokenizer.from_pretrained("gavin124/gpt2-finetuned-cnn-summarization-v2")
+# rw_tokenizer.pad_token = rw_tokenizer.eos_token
+# rw_model = GPTRewardModel(SFT_MODEL_PATH)
+# rw_model.load_state_dict(torch.load(REWARD_CHECKPOINT_PATH))
+# rw_model.half()
+# rw_model.eval()
+# rw_device = torch.device("cuda:{}".format(0))  # set reward model device
+# rw_model.to(rw_device)
+print('Do not load the premodel')
+rw_model = None
+rw_tokenizer = None
+rw_device = None
 
 def get_scores(samples: List[str]):
     scores_list = []
