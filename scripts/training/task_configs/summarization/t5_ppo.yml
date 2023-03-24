@@ -1,5 +1,5 @@
 tokenizer:
-  model_name: t5-base
+  model_name: t5-small
   padding_side: left
   truncation_side: left
   pad_token_as_eos_token: False
@@ -39,7 +39,7 @@ alg:
   policy:
     id: seq2seq_lm_actor_critic_policy
     args:
-      model_name: t5-base
+      model_name: t5-small
       apply_model_parallel: True
       prompt_truncation_side: "right"
       generation_kwargs:
@@ -54,14 +54,14 @@ train_evaluation:
   eval_every: 10
   save_every: 1
   metrics:
-    - id: meteor
-      args: {}
+    # - id: meteor
+    #   args: {}
     - id: rouge
     - id: bleu
       args: {}
-    - id: bert_score
-      args:
-        language: en
+    # - id: bert_score
+    #   args:
+    #     language: en
     # - id: bleurt
     #   args:
     #     config_name: bleurt-large-512
