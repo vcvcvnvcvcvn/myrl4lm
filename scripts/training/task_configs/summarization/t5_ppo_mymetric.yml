@@ -30,7 +30,7 @@ alg:
     batch_size: 4
     verbose: 1
     learning_rate: 0.000002
-    n_epochs: 5
+    n_epochs: 2
     ent_coef: 0.0
   kl_div:
     coeff: 0.001

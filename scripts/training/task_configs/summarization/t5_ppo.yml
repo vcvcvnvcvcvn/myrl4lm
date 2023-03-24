@@ -27,11 +27,11 @@ env:
 alg:
   id: ppo
   args: 
-    n_steps: 512
-    batch_size: 64
+    n_steps: 128
+    batch_size: 4
     verbose: 1
     learning_rate: 0.000002
-    n_epochs: 5
+    n_epochs: 2
     ent_coef: 0.0
   kl_div:
     coeff: 0.001
@@ -50,8 +50,8 @@ alg:
     
 train_evaluation:
   eval_batch_size: 100
-  n_iters: 100
-  eval_every: 100
+  n_iters: 10
+  eval_every: 1000
   save_every: 1000
   metrics:
     # - id: meteor
