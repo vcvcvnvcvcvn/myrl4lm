@@ -1,5 +1,5 @@
 tokenizer:
-  model_name: t5-base
+  model_name: t5-small
   padding_side: left
   truncation_side: right
   pad_token_as_eos_token: False 
@@ -20,7 +20,7 @@ alg:
     learning_rate: 0.0001
     save_total_limit: 1
   model_type: seq2seq
-  model_name: t5-base
+  model_name: t5-small
   generation_kwargs:
     do_sample: True
     top_k: 0
@@ -32,8 +32,8 @@ alg:
 train_evaluation:
   eval_batch_size: 100
   metrics:
-    - id: meteor
-      args: {}
+    # - id: meteor
+    #   args: {}
     - id: rouge
     - id: bleu
       args: {}
