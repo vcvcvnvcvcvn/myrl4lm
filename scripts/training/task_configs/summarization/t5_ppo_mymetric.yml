@@ -11,13 +11,12 @@ datapool:
   id: cnn_daily_mail
   args:
     prompt_prefix: "Summarize: "
-    max_size: 500
 
 
 env:
-  n_envs: 1
+  n_envs: 10
   args:
-    max_prompt_length: 64
+    max_prompt_length: 512
     max_episode_length: 100
     terminate_on_eos: True
     prompt_truncation_side: "right"
@@ -48,7 +47,7 @@ alg:
         max_new_tokens: 100          
     
 train_evaluation:
-  eval_batch_size: 16
+  eval_batch_size: 100
   n_iters: 10
   eval_every: 10
   save_every: 50
@@ -58,9 +57,9 @@ train_evaluation:
     - id: rouge
     - id: bleu
       args: {}
-    - id: bert_score
-      args:
-        language: en
+    # - id: bert_score
+    #   args:
+    #     language: en
     # - id: bleurt
     #   args:
     #     config_name: bleurt-large-512
