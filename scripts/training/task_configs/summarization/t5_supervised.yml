@@ -31,6 +31,8 @@ alg:
 
 train_evaluation:
   eval_batch_size: 100
+  eval_every: 50000
+  save_every: 35000
   metrics:
     # - id: meteor
     #   args: {}
