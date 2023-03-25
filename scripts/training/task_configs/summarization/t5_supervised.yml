@@ -39,9 +39,9 @@ train_evaluation:
     - id: rouge
     - id: bleu
       args: {}
-    - id: bert_score
-      args:
-        language: en
+    # - id: bert_score
+    #   args:
+    #     language: en
     # - id: bleurt
     #   args:
     #     config_name: bleurt-large-512
