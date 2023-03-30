@@ -15,7 +15,7 @@ if not os.path.exists(REWARD_CHECKPOINT_PATH):
     os.makedirs("reward_model/rm_checkpoint", exist_ok=True)
     os.system(
         f"wget -O {REWARD_CHECKPOINT_PATH} \
-        https://huggingface.co/Jieming/Active-learning-reward-model/tree/main#:~:text=pytorch_model.bin"
+        https://huggingface.co/Jieming/Active-learning-reward-model/resolve/main/pytorch_model.bin"
     )
 #https://huggingface.co/Jieming/Active-learning-reward-model/tree/main#:~:text=pytorch_model.bin
 SFT_MODEL_PATH = "EleutherAI/gpt-neo-2.7B"
