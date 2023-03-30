@@ -49,8 +49,8 @@ alg:
 train_evaluation:
   eval_batch_size: 100
   n_iters: 10
-  eval_every: 10
-  save_every: 50
+  eval_every: 1000
+  save_every: 51
   metrics:
     - id: meteor
       args: {}
@@ -81,4 +81,3 @@ train_evaluation:
     temperature: 0.7
     min_length: 50
     max_new_tokens: 100
-    num_beams: 1
