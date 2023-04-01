@@ -179,22 +179,23 @@ class OnPolicyTrainer(TrainerWarmStartMixin):
 
     def _evaluate_on_datapools(self, epoch: int,
                                splits: List[str] = ["val", "test"]):
-        for split in splits:
-            evaluate_on_samples(policy=self._alg.policy,
-                                tokenizer=self._tokenizer,
-                                samples=self._samples_by_split[split],
-                                batch_size=self._eval_batch_size,
-                                max_prompt_length=self._max_prompt_length,
-                                metrics=self._metrics,
-                                epoch=epoch,
-                                split_name=split,
-                                tracker=self._tracker,
-                                gen_kwargs=self._eval_gen_kwargs)
+        #for split in splits:
+        split = 'test'
+        evaluate_on_samples(policy=self._alg.policy,
+                            tokenizer=self._tokenizer,
+                            samples=self._samples_by_split[split],
+                            batch_size=self._eval_batch_size,
+                            max_prompt_length=self._max_prompt_length,
+                            metrics=self._metrics,
+                            epoch=epoch,
+                            split_name=split,
+                            tracker=self._tracker,
+                            gen_kwargs=self._eval_gen_kwargs)
 
     def train_and_eval(self):
         # evaluate on val and test set before fine-tuning once
         iter_start = self._trainer_state["current_iter"]
-        self._evaluate_on_datapools(epoch=iter_start)
+        # self._evaluate_on_datapools(epoch=iter_start)
 
         # train for given number of iters
         for epoch in range(iter_start, self._n_iters):
