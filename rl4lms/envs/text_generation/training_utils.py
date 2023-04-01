@@ -194,7 +194,7 @@ class OnPolicyTrainer(TrainerWarmStartMixin):
     def train_and_eval(self):
         # evaluate on val and test set before fine-tuning once
         iter_start = self._trainer_state["current_iter"]
-        #self._evaluate_on_datapools(epoch=iter_start)
+        self._evaluate_on_datapools(epoch=iter_start)
 
         # train for given number of iters
         for epoch in range(iter_start, self._n_iters):
