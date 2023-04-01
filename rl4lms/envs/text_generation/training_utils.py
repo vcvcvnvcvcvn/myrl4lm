@@ -160,7 +160,7 @@ class OnPolicyTrainer(TrainerWarmStartMixin):
         self._samples_by_split = build_datapool(
             self._datapool_config)
         self._env = build_env(self._env_config, self._reward_fn,
-                              self._tokenizer, self._samples_by_split["train"])
+                              self._tokenizer, self._samples_by_split["train"][:1000])
         self._alg = build_alg(self._on_policy_alg_config,
                               self._env, self._tracker,
                               self._policy_state_dict,
@@ -183,7 +183,7 @@ class OnPolicyTrainer(TrainerWarmStartMixin):
         split = 'test'
         evaluate_on_samples(policy=self._alg.policy,
                             tokenizer=self._tokenizer,
-                            samples=self._samples_by_split[split],
+                            samples=self._samples_by_split[split][:100],
                             batch_size=self._eval_batch_size,
                             max_prompt_length=self._max_prompt_length,
                             metrics=self._metrics,
