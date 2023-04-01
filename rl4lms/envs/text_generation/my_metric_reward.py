@@ -13,7 +13,6 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 REWARD_CHECKPOINT_PATH = "reward_model/rm_checkpoint/pytorch_model.bin"
 if not os.path.exists(REWARD_CHECKPOINT_PATH):
     os.makedirs("reward_model/rm_checkpoint", exist_ok=True)
-    1/0
     os.system(
         f"wget -O {REWARD_CHECKPOINT_PATH} \
         https://huggingface.co/Jieming/Active-learning-reward-model/resolve/main/pytorch_model.bin"
